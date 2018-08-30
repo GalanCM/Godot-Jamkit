@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://JamTutorial.gd" type="Script" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node
+
+signal next_tutorial
+
+func start_tutorial():
+	print(\"step1 started.\")
+	
+	yield(get_tree().create_timer(2), \"timeout\")
+	emit_signal(\"next_tutorial\")
+"
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Node
+
+signal next_tutorial
+
+func start_tutorial():
+	print(\"step2 started.\")
+	
+	yield(get_tree().create_timer(2), \"timeout\")
+	emit_signal(\"next_tutorial\")
+"
+
+[node name="JamTutorial" type="Node"]
+script = ExtResource( 1 )
+
+[node name="TestTutorial1" type="Node" parent="."]
+script = SubResource( 1 )
+
+[node name="TestTutorial2" type="Node" parent="."]
+script = SubResource( 2 )
+_sections_unfolded = [ "Script", "script" ]
+

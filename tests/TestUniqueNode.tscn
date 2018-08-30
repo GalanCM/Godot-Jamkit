@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node2D
+
+
+func _ready() -> void:
+	# unique node doesn't exist
+	var no_unique_node := JamKit.get_unique_node(\"Unique\")
+	print(no_unique_node)
+	assert(no_unique_node == null)
+	
+	$UniqueNode.add_to_group(\"Unique\")
+	
+	# unique node does exist
+	var true_unique_node = JamKit.get_unique_node(\"Unique\")
+	print(true_unique_node)
+	assert(true_unique_node is Node)
+	
+	add_child( $UniqueNode.duplicate() )
+	
+	# unique node is not unique
+	var not_unique_node := JamKit.get_unique_node(\"Unique\")
+	print( \"Non-unique gets same result as unique.\" if not_unique_node == true_unique_node else \"Non-unique gets different result from unique\")
+	assert(not_unique_node == true_unique_node)
+	
+	print(\"TESTS PASSED\")
+	get_tree().quit()"
+
+[node name="TestUniqueNode" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="UniqueNode" type="Node2D" parent="."]
+
