@@ -6,30 +6,55 @@ script/source = "extends Node2D
 
 
 func _ready() -> void:
-	# unique node doesn't exist
+	var failed_tests = 0
+	var test_count = 4
+	
+	print(\"--TEST: unique node has not been set.--\")
 	var no_unique_node := JamKit.get_unique_node(\"Unique\")
-	print(no_unique_node)
-	assert(no_unique_node == null)
+	if no_unique_node == null:
+		print(\"Passed.\")
+	else:
+		print(\"Failed.\")
+		failed_tests += 1
 	
-	$UniqueNode.add_to_group(\"Unique\")
+	JamKit.set_unique_node(\"Unique\", $UniqueNode)
 	
-	# unique node does exist
-	var true_unique_node = JamKit.get_unique_node(\"Unique\")
-	print(true_unique_node)
-	assert(true_unique_node is Node)
+	print(\"--TEST: unique node has been set.--\")
+	var first_unique_node := JamKit.get_unique_node(\"Unique\")
+	if first_unique_node is Node:
+		print(\"Passed.\")
+	else:
+		print(\"Failed.\")
+		failed_tests += 1
 	
-	add_child( $UniqueNode.duplicate() )
+	print(\"--TEST: can't replace unique node without setting `replace` parameter.--\")
+	JamKit.set_unique_node(\"Unique\", $UniqueNode2)
+	var second_unique_node := JamKit.get_unique_node(\"Unique\")
+	if first_unique_node == second_unique_node:
+		print(\"Passed.\")
+	else:
+		print(\"Failed.\")
+		failed_tests += 1
 	
-	# unique node is not unique
-	var not_unique_node := JamKit.get_unique_node(\"Unique\")
-	print( \"Non-unique gets same result as unique.\" if not_unique_node == true_unique_node else \"Non-unique gets different result from unique\")
-	assert(not_unique_node == true_unique_node)
+	print(\"--TEST: can replace unique node when `replace` parameter is true.--\")
+	JamKit.set_unique_node(\"Unique\", $UniqueNode2, true)
+	var third_unique_node := JamKit.get_unique_node(\"Unique\")
+	if first_unique_node != third_unique_node:
+		print(\"Passed.\")
+	else:
+		print(\"Failed.\")
+		failed_tests += 1
 	
-	print(\"TESTS PASSED\")
+	if failed_tests == 0:
+		print(\"TESTS PASSED\")
+	else:
+		print(\"FAILED \" + str(failed_tests) + \" OF \" + str(test_count) + \" TESTS\")
 	get_tree().quit()"
 
 [node name="TestUniqueNode" type="Node2D"]
 script = SubResource( 1 )
 
 [node name="UniqueNode" type="Node2D" parent="."]
+
+[node name="UniqueNode2" type="Node2D" parent="."]
 
