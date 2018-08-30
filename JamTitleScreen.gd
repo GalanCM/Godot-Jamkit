@@ -7,6 +7,7 @@ func _ready() -> void:
 	set_process_input(false)
 
 func _input(event: InputEvent) -> void:
+	# start game input (any key or action)
 	if ( event is InputEventKey or event is InputEventAction ) and not event.is_echo():
 		if game_scene != null:
 			get_tree().change_scene_to(game_scene)
