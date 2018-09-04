@@ -7,7 +7,7 @@ script/source = "extends Node2D
 
 func _ready() -> void:
 	var failed_tests = 0
-	var test_count = 4
+	var test_count = 5
 	
 	print(\"--TEST: unique node has not been set.--\")
 	var no_unique_node := JamKit.get_unique_node(\"Unique\")
@@ -40,6 +40,15 @@ func _ready() -> void:
 	JamKit.set_unique_node(\"Unique\", $UniqueNode2, true)
 	var third_unique_node := JamKit.get_unique_node(\"Unique\")
 	if first_unique_node != third_unique_node:
+		print(\"Passed.\")
+	else:
+		print(\"Failed.\")
+		failed_tests += 1
+		
+	print(\"--TEST: remove unique node.--\")
+	JamKit.remove_unique_node(\"Unique\")
+	var fourth_unique_node := JamKit.get_unique_node(\"Unique\")
+	if fourth_unique_node == null:
 		print(\"Passed.\")
 	else:
 		print(\"Failed.\")

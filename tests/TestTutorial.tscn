@@ -49,7 +49,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="JamTutorial" index="0" instance=ExtResource( 1 )]
+[node name="JamTutorial" instance=ExtResource( 1 )]
 script = SubResource( 3 )
 _sections_unfolded = [ "Script" ]
 
