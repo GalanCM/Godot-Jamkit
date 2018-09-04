@@ -42,7 +42,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="JamTutorial" index="0" instance=ExtResource( 1 )]
+[node name="JamTutorial" instance=ExtResource( 1 )]
 
 [node name="Tutorial 1" type="Label" parent="." index="0"]
 visible = false
