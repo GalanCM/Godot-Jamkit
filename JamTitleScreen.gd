@@ -1,4 +1,5 @@
 extends TextureRect
+class_name JamTitleScreen
 
 export var game_scene: PackedScene
 

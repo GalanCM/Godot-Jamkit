@@ -1,4 +1,5 @@
 extends TextureRect
+class_name JamGameOver
 
 enum RestartModes {
 	current_scene,

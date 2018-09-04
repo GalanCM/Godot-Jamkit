@@ -9,12 +9,23 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "TextureRect",
+"class": "JamGameOver",
+"language": "GDScript",
+"path": "res://JamGameOver.gd"
+}, {
+"base": "TextureRect",
+"class": "JamTitleScreen",
+"language": "GDScript",
+"path": "res://JamTitleScreen.gd"
+}, {
 "base": "Node",
 "class": "JamTutorial",
 "language": "GDScript",
 "path": "res://JamTutorial.gd"
 } ]
 _global_script_class_icons={
+"JamGameOver": "",
 "JamTitleScreen": "",
 "JamTutorial": ""
 }
