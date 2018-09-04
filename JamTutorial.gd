@@ -3,11 +3,12 @@ class_name JamTutorial
 
 signal next_tutorial
 
-func start_tutorial() -> void:
+func _ready() -> void:
 	for child in get_children(): # hide all children
 		if child.has_method('hide'):
 			child.hide()
-			
+
+func start_tutorial() -> void:
 	# loop through each direct child
 	for child in get_children():
 		var tutorial := child as Node
