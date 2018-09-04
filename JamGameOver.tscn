@@ -74,8 +74,8 @@ expand = true
 stretch_mode = 0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Rect", "Script", "Visibility" ]
-restart_scene = 0
-target_scene = null
+restart_mode = 0
+restart_target = null
 
 [node name="Game Over" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0 )
