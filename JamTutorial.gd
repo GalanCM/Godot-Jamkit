@@ -1,8 +1,9 @@
 extends Node
+class_name JamTutorial
 
-signal tutorial_complete
+signal next_tutorial
 
-func _ready() -> void:
+func start_tutorial() -> void:
 	# loop through each direct child
 	for child in get_children():
 		var tutorial := child as Node
@@ -17,7 +18,7 @@ func _ready() -> void:
 		# wait for this tutorial to complete before going to the next one
 		yield(tutorial, "next_tutorial")
 	
-	emit_signal("tutorial_complete")
+	emit_signal("next_tutorial")
 	
 	# free JamTutorial when done
 	queue_free()
